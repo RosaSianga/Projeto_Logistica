@@ -13,9 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 
-public class Usuarios {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,8 @@ public class Usuarios {
     @Column(name = "senha", nullable = false, columnDefinition = "TEXT")
     private String senha;
 
-    @Column(name = "tipo_usuario_id")
-    private Integer tipoUsuarioId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "tipo_usuario_id")
+    private TipoUsuario tipoUsuario;
 
 }
