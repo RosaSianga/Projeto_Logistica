@@ -13,24 +13,28 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
 
     public UsuarioService(UsuarioRepository repo) {
+
         usuarioRepository = repo;
     }
 
     public List<Usuario> listarUsuarios() {
+
         return usuarioRepository.findAll();
     }
 
     public Usuario cadastrarUsuario(Usuario usuario) {
+
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario consultarUsuarioPorId(Integer id){
+    public Usuario consultarUsuarioPorId(Integer id) {
+
         return usuarioRepository.findById(id).orElse(null);
     }
 
-    public Usuario atualizarUsuario(Integer id, Usuario usuarioAtualizado){
+    public Usuario atualizarUsuario(Integer id, Usuario usuarioAtualizado) {
         Usuario usuarioExistente = consultarUsuarioPorId(id);
-        if(usuarioExistente == null){
+        if (usuarioExistente == null) {
             return null;
         }
 
@@ -38,9 +42,9 @@ public class UsuarioService {
         return usuarioRepository.save(usuarioExistente);
     }
 
-    public Usuario deletarUsuario (Integer id){
+    public Usuario deletarUsuario(Integer id) {
         Usuario usuarioExistente = consultarUsuarioPorId(id);
-        if(usuarioExistente == null){
+        if (usuarioExistente == null) {
             return null;
         }
         usuarioRepository.delete(usuarioExistente);

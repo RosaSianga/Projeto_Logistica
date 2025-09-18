@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/api/usuario")
 @Tag(name = "Controle de Usuários", description = "Operações relacionadas ao usuário")
 public class UsuarioController {
 
@@ -29,7 +29,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     @Operation(
             summary = "Consultar usuário pelo Identificador(ID)"
     )
@@ -41,19 +41,16 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PostMapping("/id")
+    @PostMapping
     @Operation(
             summary = "Cadastrar um novo usuário"
     )
     ResponseEntity<Usuario> cadastrarUsuario (@RequestBody Usuario usuario) {
         Usuario novoUsuario = usuarioService.cadastrarUsuario(usuario);
-        if (novoUsuario == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(novoUsuario);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     @Operation(
             summary = "Atualizar um usuário"
     )
@@ -65,14 +62,14 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioAtualizado);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     @Operation(
             summary = "Deletar um usuário"
     )
-    ResponseEntity<Usuario> deletarUsuario (@PathVariable Integer id) {
+    ResponseEntity<?> deletarUsuario (@PathVariable Integer id) {
         Usuario usuarioDeletado = usuarioService.deletarUsuario(id);
         if (usuarioDeletado == null) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().body("Não encontrado");
         }
         return ResponseEntity.ok(usuarioDeletado);
     }
