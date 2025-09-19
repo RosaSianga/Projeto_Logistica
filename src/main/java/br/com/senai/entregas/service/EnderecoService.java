@@ -35,7 +35,7 @@ public class EnderecoService {
         return enderecoRepository.save(enderecoExistente);
     }
 
-    public Endereco deletarEndereco(Integer id, Endereco endereco) {
+    public Endereco deletarEndereco(Integer id) {
         Endereco enderecoExistente = buscarEnderecoPorId(id);
         if (enderecoExistente == null) {
             return null;

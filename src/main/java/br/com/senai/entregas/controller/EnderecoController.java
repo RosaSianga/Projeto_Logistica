@@ -23,7 +23,7 @@ public class EnderecoController {
         return ResponseEntity.ok().body(enderecos);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     ResponseEntity<Endereco> buscarEnderecoPorId(Integer id) {
         return ResponseEntity.ok().body(enderecoService.buscarEnderecoPorId(id));
     }
@@ -34,18 +34,18 @@ public class EnderecoController {
         return ResponseEntity.ok().body(enderecoNovo);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     ResponseEntity<Endereco> atualizarEndereco(@PathVariable Integer id, @RequestBody Endereco endereco) {
-        Endereco enderecoExistente = enderecoService.buscarEnderecoPorId(id);
+        Endereco enderecoExistente = enderecoService.atualizarEndereco(id, endereco);
         if (enderecoExistente == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(enderecoExistente);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     ResponseEntity<Endereco> deletarEndereco(@PathVariable Integer id) {
-        Endereco enderecoExistente = enderecoService.buscarEnderecoPorId(id);
+        Endereco enderecoExistente = enderecoService.deletarEndereco(id);
         if (enderecoExistente == null) {
             return ResponseEntity.notFound().build();
         }

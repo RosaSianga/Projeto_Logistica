@@ -32,7 +32,7 @@ public class TipoUsuarioService {
             return null;
         }
         tipoExixtente.setDescricao(tipoUsuario.getDescricao());
-        return tipoUsuarioRepository.save(tipoUsuario);
+        return tipoUsuarioRepository.save(tipoExixtente);
     }
 
     public TipoUsuario deletarTipoUsuario(Integer id) {

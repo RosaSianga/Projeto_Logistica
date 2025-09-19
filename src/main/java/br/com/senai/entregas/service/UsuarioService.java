@@ -3,8 +3,10 @@ package br.com.senai.entregas.service;
 import br.com.senai.entregas.model.Usuario;
 import br.com.senai.entregas.model.Veiculo;
 import br.com.senai.entregas.repository.UsuarioRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.util.List;
 
 @Service
@@ -19,7 +21,7 @@ public class UsuarioService {
 
     public List<Usuario> listarUsuarios() {
 
-        return usuarioRepository.findAll();
+        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "usuarioId"));
     }
 
     public Usuario cadastrarUsuario(Usuario usuario) {

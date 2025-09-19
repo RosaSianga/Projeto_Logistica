@@ -24,7 +24,7 @@ public final EntregaService entregaService;
         return ResponseEntity.ok(entregas);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Entrega> buscarPorId(Integer id) throws  Exception{
         Entrega entrega = entregaService.buscarEntregaPorId(id);
         return ResponseEntity.ok(entrega);
@@ -36,7 +36,7 @@ public final EntregaService entregaService;
         return ResponseEntity.ok(novaEntrega);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<Entrega> atualizarEntrega(@PathVariable Integer id, @RequestBody Entrega entrega) {
         Entrega entregaAtualizada = entregaService.atualizarEntrega(id, entrega);
         if  (entregaAtualizada == null) {
@@ -45,7 +45,7 @@ public final EntregaService entregaService;
         return ResponseEntity.ok(entregaAtualizada);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarEntrega(@PathVariable Integer id) {
         Entrega entregaDeletada = entregaService.deletarEntrega(id);
         if (entregaDeletada == null) {

@@ -37,6 +37,10 @@ public class EntregaService {
         if (entregaExistente == null) {
             return null;
         }
+        entregaExistente.setDescricaoProdudo(entrega.getDescricaoProdudo());
+        entregaExistente.setStatus(entregaExistente.getStatus());
+        entregaExistente.setEndereco(entrega.getEndereco());
+
         return entregaRepository.save(entrega);
     }
 

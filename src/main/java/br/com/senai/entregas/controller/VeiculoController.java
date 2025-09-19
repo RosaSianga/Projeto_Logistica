@@ -40,7 +40,7 @@ public class VeiculoController {
 
     @PutMapping("/id")
     public ResponseEntity<Veiculo> atualizarVeiculo(@PathVariable Integer id, @RequestBody Veiculo veiculo) {
-        Veiculo veiculoExistente = veiculoService.buscarVeiculoPorId(id);
+        Veiculo veiculoExistente = veiculoService.atualizarVeiculo(id, veiculo);
         if (veiculoExistente == null) {
             return ResponseEntity.notFound().build();
         }
@@ -49,7 +49,7 @@ public class VeiculoController {
 
     @DeleteMapping("/id")
     public ResponseEntity<Veiculo> deletarVeiculo(@PathVariable Integer id) {
-        Veiculo veiculoExistente = veiculoService.buscarVeiculoPorId(id);
+        Veiculo veiculoExistente = veiculoService.deletarVeiculo(id);
         if (veiculoExistente == null) {
             return ResponseEntity.notFound().build();
         }

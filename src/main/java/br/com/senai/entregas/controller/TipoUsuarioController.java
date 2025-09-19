@@ -44,7 +44,7 @@ public class TipoUsuarioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TipoUsuario> alterarTipo(@PathVariable Integer id, @RequestBody TipoUsuario tipoUsuario) {
-        TipoUsuario tipoExistente = tipoUsuarioService.consultarTipoPorId(id);
+        TipoUsuario tipoExistente = tipoUsuarioService.atualizarTipoUsuario(id, tipoUsuario);
         if (tipoExistente == null) {
             return ResponseEntity.notFound().build();
         }
@@ -53,7 +53,7 @@ public class TipoUsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<TipoUsuario> deletarTipo(@PathVariable Integer id) {
-        TipoUsuario tipoExistente = tipoUsuarioService.consultarTipoPorId(id);
+        TipoUsuario tipoExistente = tipoUsuarioService.deletarTipoUsuario(id);
         if (tipoExistente == null) {
             return ResponseEntity.notFound().build();
         }
