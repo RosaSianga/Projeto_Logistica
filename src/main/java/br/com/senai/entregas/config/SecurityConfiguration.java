@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,8 +25,8 @@ import javax.crypto.spec.SecretKeySpec;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-   // Todo token precisa de uma chave secreta a defino como string:
-   //  private String jwtSecret = "gPy7aFp_b4E5uX3mG8vK2rD7sW0zJ1cR9pQ4tH6uI-o=";
+    // Todo token precisa de uma chave secreta a defino como string:
+    //  private String jwtSecret = "gPy7aFp_b4E5uX3mG8vK2rD7sW0zJ1cR9pQ4tH6uI-o=";
 //    @Value("${api.jwt.secret}")
 //    private String jwtSecret;
     private String secret = "minha-senha-do-senai-@1020304050@";

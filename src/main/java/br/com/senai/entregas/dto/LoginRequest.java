@@ -1,4 +1,4 @@
-package br.com.senai.entregas.config;
+package br.com.senai.entregas.dto;
 
 import lombok.Data;
 

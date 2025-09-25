@@ -1,6 +1,6 @@
 package br.com.senai.entregas.controller;
 
-import br.com.senai.entregas.config.LoginRequest;
+import br.com.senai.entregas.dto.LoginRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -56,11 +56,11 @@ public class LoginController {
 
         // 5. Constrói o "payload" (o conteúdo) do token.
         JwtClaimsSet claims = JwtClaimsSet.builder()
-                .issuer("urbanswift-api") // Quem emitiu o token.
+                .issuer("entregas-api") // Quem emitiu o token.
                 .issuedAt(now) // Quando foi emitido.
                 .expiresAt(now.plusSeconds(validade)) // Quando expira.
                 .subject(auth.getName()) // A quem o token pertence (o email do usuário).
-                .claim("roles", auth.getAuthorities()) // Informações extras, como os perfis do usuário.
+                .claim("descricao", auth.getAuthorities()) // Informações extras, como os perfis do usuário.
                 .build();
 
         // 6. Define o cabeçalho do token, especificando o algoritmo de assinatura.
